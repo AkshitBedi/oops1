@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter an integer: ";
+    cin >> n;
+
+    // Using if-else
+    if (n % 2 == 0)
+        cout << n << " is even (if-else).\n";
+    else
+        cout << n << " is odd (if-else).\n";
+
+    // Using conditional operator
+    cout << (n % 2 == 0 ? "Even (?:)" : "Odd (?:)") << endl;
+
+    return 0;
+}
