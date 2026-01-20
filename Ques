@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i;
+    float d;
+    char c;
+
+    cout << "Enter an integer: ";
+    cin >> i;
+    cout << "Enter a decimal number: ";
+    cin >> d;
+    cout << "Enter a character: ";
+    cin >> c;
+
+    cout << "\nInteger = " << i;
+    cout << "\nDecimal = " << d;
+    cout << "\nCharacter = " << c << endl;
+
+    return 0;
+}
