@@ -1,0 +1,14 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    cout << "Line1\nLine2\n";
+    cout << "Col1\tCol2\tCol3\n";
+    cout << "ABC\bD (backspace example)\n";
+
+    int a = 10, b = 20;
+    cout << setw(10) << a << setw(10) << b << endl;
+
+    return 0;
+}
