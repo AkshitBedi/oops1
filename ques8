@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int days;
+    double fine = 0.0;
+
+    cout << "Enter number of days late: ";
+    cin >> days;
+
+    if (days <= 0) {
+        cout << "No fine." << endl;
+        return 0;
+    }
+
+    if (days > 30) {
+        cout << "Membership cancelled." << endl;
+        return 0;
+    }
+
+    if (days <= 5)
+        fine = days * 0.50;
+    else if (days <= 10)
+        fine = 5 * 0.50 + (days - 5) * 1.0;
+    else
+        fine = 5 * 0.50 + 5 * 1.0 + (days - 10) * 5.0;
+
+    cout << "Fine = Rs. " << fine << endl;
+
+    return 0;
+}
