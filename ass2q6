@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+int x = 100;          // global variable
+
+class Rectangle {
+private:
+    int width;
+    int height;
+    static int count;   // static data member
+
+public:
+    void getdata();
+    void calculatearea();
+    static void showCount();
+};
+
+int Rectangle::count = 0;      // (c) definition of static member using ::
+
+void Rectangle::getdata() {    // (a) class function defined outside class using ::
+    cout << "Enter width and height: ";
+    cin >> width >> height;
+    count++;
+}
+
+void Rectangle::calculatearea() {   // (a) again using ::
+    int area = width * height;
+    cout << "Area = " << area << endl;
+}
+
+void Rectangle::showCount() {       // (c) access static member with ::
+    cout << "Objects created = " << Rectangle::count << endl;
+}
+
+int main() {
+    int x = 10;                 // local variable with same name
+
+    cout << "Local x = " << x << endl;
+    cout << "Global x = " << ::x << endl;      // (b) access global variable
+
+    Rectangle r1, r2;
+    r1.getdata();
+    r1.calculatearea();
+    r2.getdata();
+    r2.calculatearea();
+
+    Rectangle::showCount();     // (c) access static function/member with ::
+
+    std::cout << "Using std::cout with scope resolution\n";  // (d)
+
+    return 0;
+}
