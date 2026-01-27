@@ -1,0 +1,103 @@
+Private:
+Members declared under private: can only be accessed inside the same class (by its member functions or friends).
+​They cannot be accessed directly from main() or from objects using dot operator.
+​Public:
+Members declared under public: can be accessed from outside the class using objects and dot operator.
+​Public functions are usually used to access or modify private data (data hiding, encapsulation).
+
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    // data members (private)
+    string name;
+    int rollNo;
+    string degree;
+    string hostel;
+    float currentCGPA;
+
+    // private helper function
+    void updateDetails() {
+        cout << "Update name: ";
+        getline(cin, name);
+
+        cout << "Update roll number: ";
+        cin >> rollNo;
+        cin.ignore();
+
+        cout << "Update degree: ";
+        getline(cin, degree);
+    }
+
+public:
+    // public function: add all details
+    void addDetails() {
+        cout << "Enter name: ";
+        getline(cin, name);
+
+        cout << "Enter roll number: ";
+        cin >> rollNo;
+        cin.ignore();
+
+        cout << "Enter degree: ";
+        getline(cin, degree);
+
+        cout << "Enter hostel: ";
+        getline(cin, hostel);
+
+        cout << "Enter current CGPA: ";
+        cin >> currentCGPA;
+        cin.ignore();
+    }
+
+    // public: calls private updateDetails()
+    void modifyBasicDetails() {
+        cout << "\nModifying basic details (name, roll, degree)...\n";
+        updateDetails();           // private function called inside class
+    }
+
+    // public: update only CGPA
+    void updateCGPA() {
+        cout << "Enter new CGPA: ";
+        cin >> currentCGPA;
+        cin.ignore();
+    }
+
+    // public: update only hostel
+    void updateHostel() {
+        cout << "Enter new hostel: ";
+        getline(cin, hostel);
+    }
+
+    // public: display all details
+    void displayDetails() {
+        cout << "\nStudent Details:\n";
+        cout << "Name: " << name << endl;
+        cout << "Roll No: " << rollNo << endl;
+        cout << "Degree: " << degree << endl;
+        cout << "Hostel: " << hostel << endl;
+        cout << "Current CGPA: " << currentCGPA << endl;
+    }
+};
+
+int main() {
+    Student s;     
+
+    cout << "Add student details:\n";
+    s.addDetails();
+
+    cout << "\nInitial details:";
+    s.displayDetails();
+
+    s.modifyBasicDetails();   
+    s.updateCGPA();
+    s.updateHostel();
+
+    cout << "\nDetails after updates:";
+    s.displayDetails();
+
+    return 0;
+}
+
+​
