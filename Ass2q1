@@ -1,1 +1,40 @@
+#include <iostream>
+using namespace std;
+
+struct Student {
+    string name;
+    int rollNo;
+    string degree;
+    string hostel;
+    float currentCGPA;
+};
+
+int main() {
+    Student s;
+
+    cout << "Enter name: ";
+    getline(cin, s.name);
+
+    cout << "Enter roll number: ";
+    cin >> s.rollNo;
+    cin.ignore();        
+    cout << "Enter degree: ";
+    getline(cin, s.degree);
+
+    cout << "Enter hostel: ";
+    getline(cin, s.hostel);
+
+    cout << "Enter current CGPA: ";
+    cin >> s.currentCGPA;
+
+
+    cout << "\nStudent Details:\n";
+    cout << "Name: " << s.name << endl;
+    cout << "Roll No: " << s.rollNo << endl;
+    cout << "Degree: " << s.degree << endl;
+    cout << "Hostel: " << s.hostel << endl;
+    cout << "Current CGPA: " << s.currentCGPA << endl;
+
+    return 0;
+}
 
