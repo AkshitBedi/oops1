@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+private:
+    void secretFunction() {
+        cout << "Inside private function" << endl;
+    }
+
+public:
+    void publicFunction() {
+        cout << "Inside public function" << endl;
+        secretFunction();
+    }
+};
+
+int main() {
+    Demo d;
+    d.publicFunction();
+    return 0;
+}
