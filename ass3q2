@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class B;
+
+class A {
+    int x;
+public:
+    void set(int a) { x = a; }
+    friend void swapData(A &, B &);
+    void show() { cout << x << endl; }
+};
+
+class B {
+    int y;
+public:
+    void set(int b) { y = b; }
+    friend void swapData(A &, B &);
+    void show() { cout << y << endl; }
+};
+
+void swapData(A &a, B &b) {
+    int temp = a.x;
+    a.x = b.y;
+    b.y = temp;
+}
+
+int main() {
+    A a;
+    B b;
+    int x, y;
+    cin >> x >> y;
+
+    a.set(x);
+    b.set(y);
+
+    swapData(a, b);
+
+    a.show();
+    b.show();
+
+    return 0;
+}
