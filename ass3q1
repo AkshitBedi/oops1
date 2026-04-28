@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    void set(int x) {
+        this->x = x;
+    }
+    void show() {
+        cout << x << endl;
+    }
+};
+
+int main() {
+    Demo d;
+    Demo *ptr;
+
+    int val;
+    cin >> val;
+
+    d.set(val);
+    d.show();
+
+    ptr = &d;
+    ptr->show();
+
+    return 0;
+}
