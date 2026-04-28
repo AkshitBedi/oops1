@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    void set(int a) { x = a; }
+    void show() { cout << x << endl; }
+};
+
+int main() {
+    int *p = new int;
+    cin >> *p;
+    cout << *p << endl;
+    delete p;
+
+    float *f = new float;
+    cin >> *f;
+    cout << *f << endl;
+    delete f;
+
+    int n;
+    cin >> n;
+    int *arr = new int[n];
+    for(int i = 0; i < n; i++) cin >> arr[i];
+    for(int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << endl;
+    delete[] arr;
+
+    int m;
+    cin >> m;
+    float *arrf = new float[m];
+    for(int i = 0; i < m; i++) cin >> arrf[i];
+    for(int i = 0; i < m; i++) cout << arrf[i] << " ";
+    cout << endl;
+    delete[] arrf;
+
+    Demo *obj = new Demo;
+    int val;
+    cin >> val;
+    obj->set(val);
+    obj->show();
+    delete obj;
+
+    int k;
+    cin >> k;
+    Demo *objs = new Demo[k];
+    for(int i = 0; i < k; i++) {
+        int v;
+        cin >> v;
+        objs[i].set(v);
+    }
+    for(int i = 0; i < k; i++) {
+        objs[i].show();
+    }
+    delete[] objs;
+
+    return 0;
+}
