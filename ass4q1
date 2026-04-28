@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+    int l, b;
+public:
+    Rectangle() {
+        l = 0;
+        b = 0;
+    }
+    Rectangle(int x) {
+        l = x;
+        b = x;
+    }
+    Rectangle(int x, int y) {
+        l = x;
+        b = y;
+    }
+    int area() {
+        return l * b;
+    }
+};
+
+int main() {
+    int x, y;
+    cin >> x >> y;
+
+    Rectangle r1;
+    Rectangle r2(x);
+    Rectangle r3(x, y);
+
+    cout << r1.area() << endl;
+    cout << r2.area() << endl;
+    cout << r3.area() << endl;
+
+    return 0;
+}
