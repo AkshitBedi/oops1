@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+    int l, b;
+public:
+    Rectangle(int x = 0, int y = 0) {
+        l = x;
+        b = y;
+    }
+    int area() {
+        return l * b;
+    }
+    ~Rectangle() {
+    }
+};
+
+int main() {
+    int n;
+    cin >> n;
+
+    Rectangle r[n];
+
+    for(int i = 0; i < n; i++) {
+        int l, b;
+        cin >> l >> b;
+        r[i] = Rectangle(l, b);
+    }
+
+    for(int i = 0; i < n; i++) {
+        cout << r[i].area() << endl;
+    }
+
+    return 0;
+}
