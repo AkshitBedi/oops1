@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    int x;
+    void setA(int a) { x = a; }
+};
+
+class B : public A {
+public:
+    int y;
+    void setB(int b) { y = b; }
+};
+
+class C {
+public:
+    int z;
+    void setC(int c) { z = c; }
+};
+
+class D : public B {
+public:
+    void showD() {
+        cout << x << " " << y << endl;
+    }
+};
+
+class E : public A, public C {
+public:
+    void showE() {
+        cout << x << " " << z << endl;
+    }
+};
+
+class F : public A {
+public:
+    void showF() {
+        cout << x << endl;
+    }
+};
+
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    B obj1;
+    obj1.setA(a);
+    obj1.setB(b);
+    cout << obj1.x << " " << obj1.y << endl;
+
+    D obj2;
+    obj2.setA(a);
+    obj2.setB(b);
+    obj2.showD();
+
+    E obj3;
+    obj3.setA(a);
+    obj3.setC(c);
+    obj3.showE();
+
+    F obj4;
+    obj4.setA(a);
+    obj4.showF();
+
+    return 0;
+}
