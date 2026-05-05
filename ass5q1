@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+    int x;
+public:
+    void setBase(int a) {
+        x = a;
+    }
+    void showBase() {
+        cout << x << endl;
+    }
+};
+
+class Derived : public Base {
+    int y;
+public:
+    void setDerived(int b) {
+        y = b;
+    }
+    void showDerived() {
+        cout << y << endl;
+    }
+};
+
+int main() {
+    Base b;
+    Derived d;
+
+    int x, y;
+    cin >> x >> y;
+
+    b.setBase(x);
+    b.showBase();
+
+    d.setBase(x);
+    d.setDerived(y);
+    d.showBase();
+    d.showDerived();
+
+    return 0;
+}
