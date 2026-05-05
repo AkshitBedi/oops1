@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+public:
+    void operator()(int a, int b, int c){
+        cout<<a+b+c<<endl;
+    }
+};
+
+int main(){
+    Demo d;
+    int a,b,c;
+    cin>>a>>b>>c;
+    d(a,b,c);
+    return 0;
+}
