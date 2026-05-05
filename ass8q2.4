@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Calc {
+    T a,b;
+public:
+    Calc(T x, T y){ a=x; b=y; }
+
+    void add(){ cout<<a+b<<endl; }
+    void sub(){ cout<<a-b<<endl; }
+    void mul(){ cout<<a*b<<endl; }
+    void div(){ cout<<a/b<<endl; }
+};
+
+int main(){
+    int x,y;
+    cin>>x>>y;
+    Calc<int> c(x,y);
+    c.add();
+    c.sub();
+    c.mul();
+    c.div();
+    return 0;
+}
