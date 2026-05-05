@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+template <class T>
+void process(T a){
+    cout<<a<<endl;
+}
+
+template <class T>
+void process(T a, T b){
+    cout<<a+b<<endl;
+}
+
+template <class T, class U>
+void process(T a, U b){
+    cout<<a<<" "<<b<<endl;
+}
+
+int main(){
+    int a,b;
+    float x;
+    cin>>a>>b>>x;
+
+    process(a);
+    process(a,b);
+    process(a,x);
+
+    return 0;
+}
