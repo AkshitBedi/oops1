@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+public:
+    string title, author, ISBN;
+
+    Book() {
+        this->title = "";
+        this->author = "";
+        this->ISBN = "";
+    }
+
+    Book(string t, string a, string i) {
+        this->title = t;
+        this->author = a;
+        this->ISBN = i;
+    }
+
+    Book(const Book &b) {
+        this->title = b.title;
+        this->author = b.author;
+        this->ISBN = b.ISBN;
+    }
+};
+
+class Library {
+    Book *books;
+    int count;
+public:
+    Library(int n) {
+        books = new Book[n];
+        count = 0;
+    }
+
+    bool addNewBook(string &t, string &a, string &i) {
+        books[count] = Book(t, a, i);
+        count++;
+        return true;
+    }
+
+    bool removeBooks(string &ISBN) {
+        for(int i = 0; i < count; i++) {
+            if(books[i].ISBN == ISBN) {
+                for(int j = i; j < count-1; j++) {
+                    books[j] = books[j+1];
+                }
+                count--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void displayDetails() {
+        for(int i = 0; i < count; i++) {
+            cout << books[i].title << endl;
+            cout << books[i].author << endl;
+            cout << books[i].ISBN << endl;
+        }
+    }
+};
+
+int main() {
+    int n;
+    cin >> n;
+
+    Library lib(n);
+
+    Book arr[2] = {
+        Book("A","B","1"),
+        Book("C","D","2")
+    };
+
+    for(int i = 0; i < n; i++) {
+        string t, a, id;
+        cin >> t >> a >> id;
+        lib.addNewBook(t, a, id);
+    }
+
+    string rem;
+    cin >> rem;
+    lib.removeBooks(rem);
+
+    lib.displayDetails();
+
+    return 0;
+}
