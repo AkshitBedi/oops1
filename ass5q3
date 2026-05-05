@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    int x;
+protected:
+    int y;
+private:
+    int z;
+public:
+    void set(int a, int b, int c) {
+        x = a;
+        y = b;
+        z = c;
+    }
+};
+
+class PublicDerived : public Base {
+public:
+    void show() {
+        cout << x << " " << y << endl;
+    }
+};
+
+class ProtectedDerived : protected Base {
+public:
+    void setData(int a, int b, int c) {
+        set(a, b, c);
+    }
+    void show() {
+        cout << x << " " << y << endl;
+    }
+};
+
+class PrivateDerived : private Base {
+public:
+    void setData(int a, int b, int c) {
+        set(a, b, c);
+    }
+    void show() {
+        cout << x << " " << y << endl;
+    }
+};
+
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    PublicDerived p;
+    p.set(a, b, c);
+    p.show();
+
+    ProtectedDerived pr;
+    pr.setData(a, b, c);
+    pr.show();
+
+    PrivateDerived pv;
+    pv.setData(a, b, c);
+    pv.show();
+
+    return 0;
+}
