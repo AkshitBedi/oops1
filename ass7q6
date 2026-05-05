@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class STRING {
+    string s;
+public:
+    STRING(string x=""){ s=x; }
+
+    bool operator==(STRING t){
+        return s==t.s;
+    }
+
+    STRING operator+(STRING t){
+        return STRING(s+t.s);
+    }
+
+    void show(){ cout<<s<<endl; }
+};
+
+int main(){
+    string a,b;
+    cin>>a>>b;
+
+    STRING s1(a),s2(b);
+    STRING s3 = s1 + s2;
+
+    cout<<(s1==s2)<<endl;
+    s3.show();
+
+    return 0;
+}
