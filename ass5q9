@@ -1,0 +1,107 @@
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+protected:
+    string make, model;
+    int year;
+public:
+    void setVehicle(string mk, string md, int y) {
+        make = mk;
+        model = md;
+        year = y;
+    }
+};
+
+class Truck : public Vehicle {
+protected:
+    int load_capacity;
+public:
+    void setTruck(string mk, string md, int y, int lc) {
+        setVehicle(mk, md, y);
+        load_capacity = lc;
+    }
+};
+
+class RefrigeratedTruck : public Truck {
+    int temperature_control;
+public:
+    void setRefrigeratedTruck(string mk, string md, int y, int lc, int tc) {
+        setTruck(mk, md, y, lc);
+        temperature_control = tc;
+    }
+    void show() {
+        cout << make << endl;
+        cout << model << endl;
+        cout << year << endl;
+        cout << load_capacity << endl;
+        cout << temperature_control << endl;
+    }
+};
+
+class Person {
+protected:
+    string name, address;
+public:
+    void setPerson(string n, string a) {
+        name = n;
+        address = a;
+    }
+};
+
+class Staff : public Person {
+protected:
+    string employee_id, department;
+public:
+    void setStaff(string n, string a, string id, string dept) {
+        setPerson(n, a);
+        employee_id = id;
+        department = dept;
+    }
+};
+
+class Student : public Person {
+protected:
+    string student_id, grade;
+public:
+    void setStudent(string n, string a, string id, string g) {
+        setPerson(n, a);
+        student_id = id;
+        grade = g;
+    }
+};
+
+class TeachingAssistant : public Staff, public Student {
+public:
+    void setTA(string n, string a, string eid, string dept, string sid, string g) {
+        Staff::setStaff(n, a, eid, dept);
+        Student::setStudent(n, a, sid, g);
+    }
+    void show() {
+        cout << Staff::name << endl;
+        cout << Staff::address << endl;
+        cout << employee_id << endl;
+        cout << department << endl;
+        cout << student_id << endl;
+        cout << grade << endl;
+    }
+};
+
+int main() {
+    string mk, md;
+    int y, lc, tc;
+    cin >> mk >> md >> y >> lc >> tc;
+
+    RefrigeratedTruck rt;
+    rt.setRefrigeratedTruck(mk, md, y, lc, tc);
+    rt.show();
+
+    string n, a, eid, dept, sid, g;
+    cin >> n >> a >> eid >> dept >> sid >> g;
+
+    TeachingAssistant ta;
+    ta.setTA(n, a, eid, dept, sid, g);
+    ta.show();
+
+    return 0;
+}
