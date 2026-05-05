@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void area() = 0;
+    virtual void display() = 0;
+};
+
+class Circle : public Shape {
+    float r;
+public:
+    void set(float x) { r = x; }
+    void area() { cout << 3.14 * r * r << endl; }
+    void display() { cout << "Circle" << endl; }
+};
+
+class Rectangle : public Shape {
+    float l, b;
+public:
+    void set(float x, float y) { l = x; b = y; }
+    void area() { cout << l * b << endl; }
+    void display() { cout << "Rectangle" << endl; }
+};
+
+class Triangle : public Shape {
+    float b, h;
+public:
+    void set(float x, float y) { b = x; h = y; }
+    void area() { cout << 0.5 * b * h << endl; }
+    void display() { cout << "Triangle" << endl; }
+};
+
+int main() {
+    Circle c;
+    Rectangle r;
+    Triangle t;
+
+    float x, y;
+    cin >> x >> y;
+
+    c.set(x);
+    c.display();
+    c.area();
+
+    r.set(x, y);
+    r.display();
+    r.area();
+
+    t.set(x, y);
+    t.display();
+    t.area();
+
+    return 0;
+}
