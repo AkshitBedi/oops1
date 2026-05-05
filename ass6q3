@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+class Account {
+    const long accNo;
+    long transactionId;
+    string type;
+    double balance;
+    static long counter;
+
+public:
+    Account(long a, double b) : accNo(a) {
+        balance = b;
+        transactionId = 0;
+    }
+
+    long depositAmount(const long to, const long from, const double amount) {
+        if(accNo == to) {
+            balance += amount;
+            transactionId = ++counter;
+            type = "credit";
+        }
+        return transactionId;
+    }
+
+    long creditAmount(const long to, const long from, const double amount) {
+        if(accNo == from) {
+            balance -= amount;
+            transactionId = ++counter;
+            type = "debit";
+        }
+        return transactionId;
+    }
+
+    void displayDetails() const {
+        cout << accNo << endl;
+        cout << balance << endl;
+        cout << transactionId << endl;
+        cout << type << endl;
+    }
+};
+
+long Account::counter = 0;
+
+int main() {
+    Account a1(1, 1000), a2(2, 2000), a3(3, 3000), a4(4, 4000), a5(5, 5000);
+
+    long to, from;
+    double amount;
+
+    cin >> to >> from >> amount;
+
+    a1.depositAmount(to, from, amount);
+    a2.depositAmount(to, from, amount);
+    a3.depositAmount(to, from, amount);
+    a4.depositAmount(to, from, amount);
+    a5.depositAmount(to, from, amount);
+
+    a1.creditAmount(to, from, amount);
+    a2.creditAmount(to, from, amount);
+    a3.creditAmount(to, from, amount);
+    a4.creditAmount(to, from, amount);
+    a5.creditAmount(to, from, amount);
+
+    a1.displayDetails();
+    a2.displayDetails();
+    a3.displayDetails();
+    a4.displayDetails();
+    a5.displayDetails();
+
+    return 0;
+}
